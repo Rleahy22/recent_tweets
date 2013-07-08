@@ -1,0 +1,9 @@
+<div class="container">
+  <% if @tweets %>
+    <div class="tweets">
+      <% @tweets.reorder('posted_at').reverse.each do |tweet| %>
+      <p><%= tweet.text %></p>
+    </div>
+    <% end %>
+    <% end %>
+</div>
