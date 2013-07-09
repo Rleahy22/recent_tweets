@@ -2,6 +2,17 @@ get '/' do
 	erb :index
 end
 
+get '/new_tweet' do
+
+  erb :new_tweet
+end
+
+post '/new_tweet' do
+  Twitter.update(params[:tweet_field])
+
+  erb :new_tweet
+end
+
 post '/user' do
 	@user = User.verify(params)
 	unless @user.nil?
@@ -51,6 +62,5 @@ get '/:username' do
 end
 
 post '/tweets' do
-  p params
   redirect "/#{params[:tweeter]}"
 end

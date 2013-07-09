@@ -27,3 +27,18 @@ html {
   left: 30%; 
   color: white;
 }
+
+form label {
+  color: white;
+}
+
+#post_tweets {
+  margin: 2%;
+}
+
+.tweeting {
+  position: relative;
+  top: 30%;
+  left: 30%; 
+  color: white;
+}
