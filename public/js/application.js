@@ -1,7 +1,21 @@
 $(document).ready(function() {
-  // This is called after the document has loaded in its entirety
-  // This guarantees that any elements we bind to will exist on the page
-  // when we try to bind to them
-
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
+  $('.loading').show();
+  $('#tweeter_form').on('submit', function(event) {
+    event.preventDefault();
+    //console.log($('input[name="tweeter"]').val());
+    $.get('/' + $('input[name="tweeter"]').val(), function(tweetData) {
+      $('.loading').show();
+      $('.tweets').html(tweetData);
+    });
+    //showLoader = setTimeout("$('.loading').show()", 300);
+  });
+  if ($('#load_wait').length === 0){
+    $('.loading').show();
+  } else {
+    $('.loading').show();
+  };
 });
+
+
+
+

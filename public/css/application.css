@@ -1,2 +1,29 @@
-th {  text-align: left;
+.container {
+  color: white;
+  margin: 40px;
+}
+
+.tweets {
+  margin: 30px;
+
+}
+
+img {
+  height: 400px;
+  width:auto;
+  position: relative;
+  top: 30%;
+  left: 30%; 
+}
+
+html {
+  background:url('../images/friendship-black-stars-sky.gif') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.loading {
+  color: white;
 }

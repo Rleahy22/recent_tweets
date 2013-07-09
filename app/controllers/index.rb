@@ -1,5 +1,4 @@
 get '/' do
-
 	erb :index
 end
 
@@ -14,7 +13,6 @@ post '/user' do
 end
 
 get '/signup' do
-
 	erb :signup
 end
 
@@ -39,14 +37,20 @@ end
 get '/:username' do
   @user = TwitterUser.find_or_create_by_handle(params[:username])
   if @user.tweets.empty? || @user.tweets_stale?
-    # User#fetch_tweets! should make an API call
-    # and populate the tweets table
-    #
-    # Future requests should read from the tweets table 
-    # instead of making an API call
+    @load_wait = true
     @user.fetch_tweets!
   end
 
-  @tweets = @user.tweets.limit(10)
-  erb :tweets
+  @user.tweets.count < 10 ? @tweets = @user.tweets.all : @tweets = @user.tweets.last(10)
+  #@tweets = @user.tweets
+  if request.xhr?
+    erb :tweets, :layout => false
+  else
+    erb :index
+  end
+end
+
+post '/tweets' do
+  p params
+  redirect "/#{params[:tweeter]}"
 end

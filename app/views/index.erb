@@ -1,8 +1,20 @@
-<div class="login">
-  <form action="/user" method="post">
-    <input type="text" name="name" placeholder="Enter your username">
-    <input type="password" name="password" placeholder="password">
-    <input type="submit" value="Login">
+<div class="container">
+  <form id="tweeter_form" action="/tweets" method="post">
+    <label for="tweeter">Whose tweets you want to see?</label>
+    <input type="text" name="tweeter" placeholder="ex. robdelaney">
+    <input type="submit" value="Let's see those tweets!">
   </form>
-  <a href="/signup">Don't have an account? THEN GET ONE!!</a>
+  <% if @load_wait %>
+    <div id="load_wait">
+    </div>
+    <% end %>
+
+  <div class="tweets">
+    <%= erb :tweets %>
+  </div>
+  
+  <div class="loading">
+    <h2>Loading...</h2>
+    <img src="/images/thedude.gif" alt="">
+  </div>
 </div>
